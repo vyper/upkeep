@@ -5,6 +5,7 @@ gem 'hanami',       '~> 1.0.0.beta2'
 gem 'hanami-model', '~> 1.0.0.beta2'
 
 gem 'pg'
+gem 'slim'
 
 group :development do
   # Code reloading
