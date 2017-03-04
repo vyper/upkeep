@@ -12,7 +12,8 @@ RSpec.describe 'Edit a bike' do
     visit "/bikes/#{@bike.id}/edit"
 
     within 'form#bike-form' do
-      fill_in 'Name',  with: 'New name'
+      fill_in 'Name', with: 'New name'
+      select 'Road Bike', from: 'Type'
 
       click_button 'Update'
     end

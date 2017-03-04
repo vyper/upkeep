@@ -2,8 +2,13 @@ h2 Add bike
 
 = form_for :bike, routes.bikes_path do
   - div class: 'input'
-    = label :name
-    = text_field :name
+    - label :name
+    - text_field :name
+
+  - div class: 'input'
+    - label :type
+    / TODO: Improve
+    - select :type, Bike::TYPES.invert
 
   - div class: 'controls' do
-    = submit 'Create bike'
+    - submit 'Create bike'
