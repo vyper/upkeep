@@ -2,8 +2,13 @@ h2 Edit bike
 
 = form_for :bike, routes.bike_path(bike.id), method: :patch, values: { bike: bike } do
   - div class: 'input'
-    = label :name
-    = text_field :name
+    - label :name
+    - text_field :name
+
+  - div class: 'input'
+    - label :type
+    / TODO: Improve
+    - select :type, Bike::TYPES.invert
 
   - div class: 'controls' do
-    = submit 'Update bike'
+    - submit 'Update bike'

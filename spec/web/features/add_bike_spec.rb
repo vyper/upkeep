@@ -9,7 +9,8 @@ RSpec.describe 'Add a bike' do
     visit '/bikes/new'
 
     within 'form#bike-form' do
-      fill_in 'Name',  with: 'New bike'
+      fill_in 'Name', with: 'New bike'
+      select 'Road Bike', from: 'Type'
 
       click_button 'Create'
     end
