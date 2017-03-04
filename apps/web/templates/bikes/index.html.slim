@@ -7,6 +7,8 @@ h2 Bikes
         = bike.name
         | [
         = link_to 'edit', routes.edit_bike_path(bike.id)
+        | /
+        = link_to 'delete', routes.bike_path(bike.id), :'data-method' => :delete
         | ]
 - else
   p There aren't bikes yet.

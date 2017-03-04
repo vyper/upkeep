@@ -1,6 +1,6 @@
 # Configure your routes here
 # See: http://hanamirb.org/guides/routing/overview/
 
-resources :bikes, only: [:index, :new, :create, :edit, :update]
+resources :bikes, except: :show
 
 root to: 'bikes#index'
