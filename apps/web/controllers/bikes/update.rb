@@ -1,11 +1,11 @@
 module Web::Controllers::Bikes
-  class Create
+  class Update
     include Web::Action
 
     expose :bike
 
     def call(params)
-      @bike = BikeRepository.new.create(params[:bike])
+      @bike = BikeRepository.new.update(params[:id], params[:bike])
 
       redirect_to routes.bikes_path
     end

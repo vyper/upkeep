@@ -3,6 +3,13 @@ h2 Bikes
 - if bikes.any?
   div#bikes
     - bikes.each do |bike|
-      p.bike = bike.name
+      p.bike
+        = bike.name
+        | [
+        = link_to 'edit', routes.edit_bike_path(bike.id)
+        | ]
 - else
   p There aren't bikes yet.
+
+p
+  = link_to 'Add bike', routes.new_bike_path
