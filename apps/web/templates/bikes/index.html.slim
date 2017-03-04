@@ -1,0 +1,8 @@
+h2 Bikes
+
+- if bikes.any?
+  div#bikes
+    - bikes.each do |bike|
+      p.bike = bike.name
+- else
+  p There aren't bikes yet.
