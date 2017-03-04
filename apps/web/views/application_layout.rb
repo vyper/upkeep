@@ -1,7 +1,7 @@
-module Api
+module Web
   module Views
     class ApplicationLayout
-      include Api::Layout
+      include Web::Layout
     end
   end
 end
