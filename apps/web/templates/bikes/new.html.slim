@@ -1,0 +1,9 @@
+h2 Add bike
+
+= form_for :bike, routes.bikes_path do
+  - div class: 'input'
+    = label :name
+    = text_field :name
+
+  - div class: 'controls' do
+    = submit 'Create bike'

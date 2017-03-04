@@ -1,0 +1,9 @@
+h2 Edit bike
+
+= form_for :bike, routes.bike_path(bike.id), method: :patch, values: { bike: bike } do
+  - div class: 'input'
+    = label :name
+    = text_field :name
+
+  - div class: 'controls' do
+    = submit 'Update bike'
