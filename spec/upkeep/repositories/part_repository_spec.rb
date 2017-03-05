@@ -3,4 +3,6 @@ RSpec.describe PartRepository do
     it 'bike'
     it 'type'
   end
+
+  it '#find_by_bike_id'
 end

@@ -1,0 +1,14 @@
+h2
+  ' Bike
+  '  >
+  = bike.name
+  '  >
+  ' Parts
+
+- if parts.any?
+  div#parts
+    - parts.each do |part|
+      p.part
+        = part.name
+- else
+  p There aren't parts yet.
