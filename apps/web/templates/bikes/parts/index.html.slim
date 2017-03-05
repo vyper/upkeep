@@ -12,3 +12,6 @@ h2
         = part.name
 - else
   p There aren't parts yet.
+
+p
+  = link_to 'Add part', routes.new_bike_part_path(bike.id)
