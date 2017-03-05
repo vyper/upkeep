@@ -10,6 +10,10 @@ h2
     - parts.each do |part|
       p.part
         = part.name
+        '
+        | [
+        = link_to 'edit', routes.edit_bike_part_path(bike.id, part.id)
+        | ]
 - else
   p There aren't parts yet.
 

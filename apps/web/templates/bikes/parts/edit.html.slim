@@ -3,9 +3,9 @@ h2
   '  >
   = bike.name
   '  >
-  ' Add part
+  ' Edit part
 
-= form_for :part, routes.bike_parts_path(bike.id) do
+= form_for :part, routes.bike_part_path(bike.id, part.id), method: :patch, values: { part: part } do
   - div class: 'input'
     - label :name
     - text_field :name
@@ -16,4 +16,4 @@ h2
     - select :type_id, types
 
   - div class: 'controls' do
-    - submit 'Create part'
+    - submit 'Update part'

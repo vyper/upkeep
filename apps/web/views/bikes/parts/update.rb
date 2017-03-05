@@ -1,7 +1,7 @@
 module Web::Views::Bikes::Parts
-  class Create
+  class Update
     include Web::View
 
-    template 'bikes/parts/new'
+    template 'bikes/parts/edit'
   end
 end
