@@ -5,6 +5,7 @@ h2 Bikes
     - bikes.each do |bike|
       p.bike
         = bike.name
+        '
         | [
         = link_to 'edit', routes.edit_bike_path(bike.id)
         | /

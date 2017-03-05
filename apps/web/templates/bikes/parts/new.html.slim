@@ -1,0 +1,19 @@
+h2
+  ' Bike
+  '  >
+  = bike.name
+  '  >
+  ' Add part
+
+= form_for :part, routes.bike_parts_path(bike.id) do
+  - div class: 'input'
+    - label :name
+    - text_field :name
+
+  - div class: 'input'
+    / TODO: Improve
+    - label :type_id
+    - select :type_id, types
+
+  - div class: 'controls' do
+    - submit 'Create part'

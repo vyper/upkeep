@@ -1,0 +1,23 @@
+h2
+  ' Bike
+  '  >
+  = bike.name
+  '  >
+  ' Parts
+
+- if parts.any?
+  div#parts
+    - parts.each do |part|
+      p.part
+        = part.name
+        '
+        | [
+        = link_to 'edit', routes.edit_bike_part_path(bike.id, part.id)
+        | /
+        = link_to 'delete', routes.bike_part_path(bike.id, part.id), :'data-method' => :delete
+        | ]
+- else
+  p There aren't parts yet.
+
+p
+  = link_to 'Add part', routes.new_bike_part_path(bike.id)

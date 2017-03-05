@@ -8,7 +8,7 @@ RSpec.describe 'Edit a bike' do
     @bike = repository.create(name: 'name #1')
   end
 
-  it 'can create a new bike' do
+  it 'can edit an existent bike' do
     visit "/bikes/#{@bike.id}/edit"
 
     within 'form#bike-form' do
