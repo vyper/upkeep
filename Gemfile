@@ -8,6 +8,9 @@ gem 'hanami-model', '~> 1.0.0.beta2'
 
 gem 'pg'
 
+# Authentication
+gem 'omniauth-strava'
+
 # Front
 gem 'slim'
 gem 'bitters'

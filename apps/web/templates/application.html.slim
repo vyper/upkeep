@@ -10,5 +10,14 @@ html
     = stylesheet "application"
     = javascript "application"
   body
-    h1 Upkeep
-    = yield
+    header
+      h1 Upkeep
+      ul
+        li
+          - if current_user.nil?
+            = link_to 'Sign in', '/auth/strava'
+          - else
+            = link_to 'Sign out', routes.sign_out_path
+
+    .content
+      = yield
