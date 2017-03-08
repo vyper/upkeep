@@ -8,7 +8,7 @@ module Authentication
 private
 
   def authenticate!
-    redirect_to(routes.root_path) unless authenticated?
+    redirect_to(routes.join_path) unless authenticated?
   end
 
   def authenticated?
