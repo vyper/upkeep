@@ -2,6 +2,8 @@ module Web::Controllers::Bikes
   class Edit
     include Web::Action
 
+    before :authenticate!
+
     expose :bike
 
     def call(params)

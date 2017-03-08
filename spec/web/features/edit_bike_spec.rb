@@ -1,11 +1,19 @@
 require 'features_helper'
 
 RSpec.describe 'Edit a bike' do
-  let(:repository) { BikeRepository.new }
+  let(:repositories) do
+    {
+      users: UserRepository.new,
+      bikes: BikeRepository.new
+    }
+  end
 
   before do
-    repository.clear
-    @bike = repository.create(name: 'name #1')
+    repositories.each { |_, repo| repo.clear }
+
+    @user = repositories[:users].create(firstname: 'Leonardo', lastname: 'Saraiva', email: 'vyper@maneh.org', provider: 'strava', uid: SecureRandom.uuid, code: SecureRandom.uuid)
+    @bike = repositories[:bikes].create(name: 'name #1', user_id: @user.id)
+    sign_in(@user)
   end
 
   it 'can edit an existent bike' do

@@ -3,6 +3,7 @@ require 'features_helper'
 RSpec.describe 'Add a bike part' do
   let(:repositories) do
     {
+      users:      UserRepository.new,
       bikes:      BikeRepository.new,
       part_types: PartTypeRepository.new,
       parts:      PartRepository.new
@@ -10,10 +11,12 @@ RSpec.describe 'Add a bike part' do
   end
 
   before do
-    repositories.each(&:clear)
+    repositories.each { |_, repo| repo.clear }
 
-    @bike = repositories[:bikes].create(name: 'Bike name')
+    @user = repositories[:users].create(firstname: 'Leonardo', lastname: 'Saraiva', email: 'vyper@maneh.org', provider: 'strava', uid: 12345, code: SecureRandom.uuid)
+    @bike = repositories[:bikes].create(name: 'Bike name', user_id: @user.id)
     @part_type = repositories[:part_types].create(name: 'Front tire')
+    sign_in(@user)
   end
 
   it 'can create a new bike part' do

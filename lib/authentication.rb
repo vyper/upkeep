@@ -7,6 +7,10 @@ module Authentication
 
 private
 
+  def authenticate!
+    redirect_to(routes.root_path) unless authenticated?
+  end
+
   def authenticated?
     !current_user.nil?
   end

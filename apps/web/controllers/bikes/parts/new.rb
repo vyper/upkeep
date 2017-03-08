@@ -2,6 +2,8 @@ module Web::Controllers::Bikes::Parts
   class New
     include Web::Action
 
+    before :authenticate!
+
     expose :bike, :types
 
     def call(params)

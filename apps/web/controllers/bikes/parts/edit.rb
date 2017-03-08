@@ -2,6 +2,8 @@ module Web::Controllers::Bikes::Parts
   class Edit
     include Web::Action
 
+    before :authenticate!
+
     expose :part, :bike, :types
 
     def call(params)
