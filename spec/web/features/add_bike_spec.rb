@@ -1,8 +1,18 @@
 require 'features_helper'
 
 RSpec.describe 'Add a bike' do
-  after do
-    BikeRepository.new.clear
+  let(:repositories) do
+    {
+      users: UserRepository.new,
+      bikes: BikeRepository.new
+    }
+  end
+
+  before do
+    repositories.each { |_, repo| repo.clear }
+
+    @user = repositories[:users].create(firstname: 'Leonardo', lastname: 'Saraiva', email: 'vyper@maneh.org', provider: 'strava', uid: SecureRandom.uuid, code: SecureRandom.uuid)
+    sign_in(@user)
   end
 
   it 'can create a new bike' do

@@ -1,8 +1,6 @@
-module Web::Controllers::Bikes
+module Web::Controllers::Auth
   class New
     include Web::Action
-
-    before :authenticate!
 
     def call(params)
     end

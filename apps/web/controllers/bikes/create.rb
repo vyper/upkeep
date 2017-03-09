@@ -2,6 +2,8 @@ module Web::Controllers::Bikes
   class Create
     include Web::Action
 
+    before :authenticate!
+
     params do
       required(:bike).schema do
         required(:name).filled
@@ -13,7 +15,7 @@ module Web::Controllers::Bikes
 
     def call(params)
       if params.valid?
-        @bike = BikeRepository.new.create(params[:bike])
+        @bike = UserRepository.new.add_bike(current_user, params[:bike])
 
         redirect_to routes.bikes_path
       end

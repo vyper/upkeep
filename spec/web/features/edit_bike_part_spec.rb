@@ -3,6 +3,7 @@ require 'features_helper'
 RSpec.describe 'Edit a bike part' do
   let(:repositories) do
     {
+      users:      UserRepository.new,
       bikes:      BikeRepository.new,
       part_types: PartTypeRepository.new,
       parts:      PartRepository.new
@@ -10,12 +11,14 @@ RSpec.describe 'Edit a bike part' do
   end
 
   before do
-    repositories.each(&:clear)
+    repositories.each { |_, repo| repo.clear }
 
-    @bike = repositories[:bikes].create(name: 'Bike name')
+    @user = repositories[:users].create(firstname: 'Leonardo', lastname: 'Saraiva', email: 'vyper@maneh.org', provider: 'strava', uid: SecureRandom.uuid, code: SecureRandom.uuid)
+    @bike = repositories[:bikes].create(name: 'Bike name', user_id: @user.id)
     @rear_tire_type = repositories[:part_types].create(name: 'Rear tire')
     @front_tire_type = repositories[:part_types].create(name: 'Front tire')
     @part = repositories[:bikes].add_part(@bike, name: 'Part name', type_id: @rear_tire_type.id)
+    sign_in(@user)
   end
 
   it 'can edit an existent bike part' do

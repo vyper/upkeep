@@ -5,6 +5,7 @@ resources :bikes, except: :show do
   resources :parts, except: :show
 end
 
+get '/join',                    to: 'auth#new',     as: :join
 get '/sign-out',                to: 'auth#destroy', as: :sign_out
 get '/auth/failure',            to: 'auth#failure'
 get '/auth/:provider/callback', to: 'auth#success'

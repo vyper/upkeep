@@ -3,6 +3,7 @@ require 'features_helper'
 describe 'List bike parts' do
   let(:repositories) do
     {
+      users:      UserRepository.new,
       bikes:      BikeRepository.new,
       part_types: PartTypeRepository.new,
       parts:      PartRepository.new
@@ -10,11 +11,13 @@ describe 'List bike parts' do
   end
 
   before do
-    repositories.each(&:clear)
+    repositories.each { |_, repo| repo.clear }
 
-    @bike = repositories[:bikes].create(name: 'Bike name')
+    @user = repositories[:users].create(firstname: 'Leonardo', lastname: 'Saraiva', email: 'vyper@maneh.org', provider: 'strava', uid: SecureRandom.uuid, code: SecureRandom.uuid)
+    @bike = repositories[:bikes].create(name: 'Bike name', user_id: @user.id)
     @rear_tire_type = repositories[:part_types].create(name: 'Rear tire')
     @front_tire_type = repositories[:part_types].create(name: 'Front tire')
+    sign_in(@user)
   end
 
   it 'shows message when does not exist bike parts' do

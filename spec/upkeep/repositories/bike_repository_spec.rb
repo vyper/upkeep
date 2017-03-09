@@ -1,5 +1,6 @@
 RSpec.describe BikeRepository do
   context 'associations' do
+    it 'user'
     it 'parts'
   end
 

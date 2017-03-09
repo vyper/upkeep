@@ -2,6 +2,8 @@ module Web::Controllers::Bikes
   class Update
     include Web::Action
 
+    before :authenticate!
+
     params do
       required(:bike).schema do
         required(:name).filled
